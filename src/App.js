@@ -30,6 +30,15 @@ export default function App() {
           <li>
             <Link to="/RouterTestPage">RouterTestPage</Link>
           </li>
+          <li>
+            <Link to="/CustReduxPage">CustReduxPage</Link>
+          </li>
+          <li>
+            <Link to="/SchedulePage">源码&fiber</Link>
+          </li>
+          <li>
+            <Link to="/immutable">immutable</Link>
+          </li>
         </ul>
 
         <div className="main">

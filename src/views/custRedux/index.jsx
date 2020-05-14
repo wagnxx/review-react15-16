@@ -1,5 +1,8 @@
 import React from 'react'
 
-export default ()=>{
-    return <div>redux page</div>
+import HookReduxPage from './index.hook'
+
+export default () => {
+    return (
+        <HookReduxPage />)
 }

@@ -14,10 +14,12 @@ ul{
   background-color: yellowgreen;
   padding: 8px 14px;
   font-size: 18px;
+  flex-wrap: wrap;
 }
 .app .header a{
   color: #fff;
   text-decoration: none;
+  padding: 8px;
 
 
 }
