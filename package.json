@@ -20,12 +20,16 @@
   },
   "homepage": "https://github.com/wagnxx/review-react15-16#readme",
   "dependencies": {
+    "awilix": "^4.2.6",
+    "awilix-koa": "^4.0.0",
+    "koa": "^2.11.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "scripty": "^2.0.0"
   },
   "devDependencies": {
+    "@types/koa": "^2.11.3",
     "awesome-typescript-loader": "^5.2.1",
     "html-webpack-plugin": "^4.3.0",
     "typescript": "^3.9.2",

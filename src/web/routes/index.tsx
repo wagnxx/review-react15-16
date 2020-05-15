@@ -4,7 +4,7 @@ const { Suspense, lazy } = React;
 import { Switch, RouterProps, Route } from 'react-router-dom';
 
 const Home = lazy(() => {
-  import('../../components/Home');
+  import('../components/Home');
 });
 
 const routes: RouterProps[] = [
