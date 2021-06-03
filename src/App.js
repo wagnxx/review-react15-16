@@ -1,11 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Link
-} from 'react-router-dom';
- import RoutesRoot from './routes'
+import { BrowserRouter as Router, Switch, Link } from 'react-router-dom';
+import RoutesRoot from './routes';
+
 
 export default function App() {
   return (
@@ -43,7 +40,7 @@ export default function App() {
 
         <div className="main">
           <Switch>
-             <RoutesRoot  />
+            <RoutesRoot />
           </Switch>
         </div>
       </div>

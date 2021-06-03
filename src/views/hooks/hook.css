@@ -1,0 +1,18 @@
+.hook-page {
+  /* padding: 0 20px; */
+}
+.hook-page__header {
+  padding: 10px ;
+  /* margin: 10px 0; */
+  color:#fff;
+  background-color: rgb(67, 90, 82);
+}
+.hook-page__nav {
+  padding: 10px ;
+  /* padding: 0 20px; */
+  /* padding: 10px  0; */
+}
+.hook-page__main {
+  padding: 10px ;
+  border: 1px solid #ddd;
+}

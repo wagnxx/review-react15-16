@@ -27,6 +27,6 @@ export default () => (
         <Route path="/CustReduxPage"  component={CustReduxPage} />
         <Route path="/SchedulePage"  component={SchedulePage}  />
         <Route path="/immutable"  component={ImmutablePage}  />
-        <Redirect path="/" exact to={{ pathname: '/immutable' }} />
+        <Redirect path="/" exact to={{ pathname: '/hooks' }} />
     </>
 );
