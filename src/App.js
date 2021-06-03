@@ -36,6 +36,9 @@ export default function App() {
           <li>
             <Link to="/immutable">immutable</Link>
           </li>
+          <li>
+            <Link to="/basic">basicjs</Link>
+          </li>
         </ul>
 
         <div className="main">

@@ -1,0 +1,29 @@
+
+.sub-page #show{
+  min-width: 350px;
+  max-width: 700px;
+}
+
+
+.sub-page li {
+  display: inline-block;
+  width: 140px;
+  /* height: 120px; */
+  margin: 10px;
+  padding: 4px ;
+  box-sizing: content-box;
+  box-shadow: 1px 1px 1px #ddd, 0 0 1px;
+}
+
+.sub-page li img {
+  display: block;
+  /* width: 100%; */
+  margin: auto;
+  height: 80px;
+}
+.sub-page li span {
+  display: block;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

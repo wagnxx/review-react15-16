@@ -20,11 +20,11 @@ import './hook.css'
  
 
 export default () => {
-    return <div className='hook-page'>
-        <h2  className='hook-page__header' >hooks page</h2>
+    return <div className='sub-page'>
+        <h2  className='sub-page__header' >hooks page</h2>
     
         <Router>
-            <ul className='hook-page__nav'>
+            <ul className='sub-page__nav'>
 
                 <li><Link to='/hooks/useState'>useState</Link></li>
                 <li><Link to='/hooks/MemoDemo'>MemoDemo</Link></li>
@@ -34,7 +34,7 @@ export default () => {
                 <li><Link to='/hooks/ClassComp'>ClassComp</Link></li>
             </ul>
         
-            <div className='hook-page__main' style={{ padding: '10px', marginTop: '10px', border: '1px solid #ddd' }}>
+            <div className='sub-page__main' style={{ padding: '10px', marginTop: '10px', border: '1px solid #ddd' }}>
 
                 <Switch>
                     <Route path='/hooks/useState' component={UseStateDemo} />

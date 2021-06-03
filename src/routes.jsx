@@ -15,6 +15,7 @@ import RouterTestPage from './views/router';
 import CustReduxPage from './views/custRedux';
 import SchedulePage from './views/schedule';
 import ImmutablePage from './views/immutable/index';
+import BasicJsPage from './views/basicjs'
 
 export default () => (
     <>
@@ -27,6 +28,7 @@ export default () => (
         <Route path="/CustReduxPage"  component={CustReduxPage} />
         <Route path="/SchedulePage"  component={SchedulePage}  />
         <Route path="/immutable"  component={ImmutablePage}  />
-        <Redirect path="/" exact to={{ pathname: '/hooks' }} />
+        <Route path="/basic"  component={BasicJsPage}  />
+        <Redirect path="/" exact to={{ pathname: '/basic' }} />
     </>
 );
