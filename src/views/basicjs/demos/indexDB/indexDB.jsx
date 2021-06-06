@@ -1,8 +1,12 @@
-import React from 'react'
+import React,{useCallback} from 'react'
 
 import { getObjectStore, STORE_NAME, MODE } from './utils'
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Button, Row, Col } from 'antd';
+import { Card } from 'antd';
+
+const { Meta } = Card;
 
 export default () => {
   const [dataList, setDataList] = useState([]);
@@ -30,19 +34,18 @@ export default () => {
     return personStore.add(file);
   }
 
-  const getFetch = () => {
+  const getFetch = useCallback(()=>{
     const personStore = getObjectStore(STORE_NAME, MODE.READ);
     const req = personStore.getAll();
     return req;
-  }
+  },[])
 
-
-  const responseAndReset = () => {
+  const responseAndReset =useCallback(() => {
     const req = getFetch();
     req.onsuccess = function () {
-      batchReSet(req.result)
+      batchReSet(req.result) 
     };
-  }
+  },[getFetch]);
 
   const delItems = () => {
     let checkedList = dataList.filter(item => item.checked);
@@ -61,31 +64,43 @@ export default () => {
 
 
   useEffect(() => {
-    setTimeout(responseAndReset, 100);
-  }, [])
+    setTimeout(responseAndReset, 1000);
+  }, [responseAndReset])
 
 
   return (
     <div>
-      <h2>
-        <input type="file" onChange={addFile} />
-        <button onClick={delItems}>删 除</button>
+      <h2 style={{ margin: '10px 0' }}>
+        <Row>
+          <Col span={8}><input type="file" onChange={addFile} /></Col>
+          <Col span={8} offset={8}>
+            <Button type='danger' onClick={delItems}>删 除</Button>
+          </Col>
+        </Row>
+
+
 
       </h2>
       <div id="show"  >
         <ul>
+
           {
             !dataList.length ? '' :
               dataList.map((item, index) => {
-                return <li key={index}>
-                  <label>
-                    <img src={item.src} alt='' height='100'></img>
-                    <span>{item.name}</span>
-                    <input type="checkbox" checked={item.checked} onChange={() => checkedChanged(item)} />
-                  </label>
+                return <li key={index}><Card
+                  hoverable
+                  style={{ width: '100%',height:'100%' }}
+                  cover={<img alt="example" src={item.src} />}
+                >
+                  <Meta title={item.name} description={'id :' + item.id} />
+                  <input type="checkbox" checked={item.checked} onChange={() => checkedChanged(item)} />
+                </Card>
                 </li>
+
+
               })
           }
+
         </ul>
       </div>
     </div>

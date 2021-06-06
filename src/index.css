@@ -31,3 +31,7 @@ code {
   padding: 10px ;
   border: 1px solid #ddd;
 }
+
+.login-page .ant-btn{
+  margin-right: 8px;
+}

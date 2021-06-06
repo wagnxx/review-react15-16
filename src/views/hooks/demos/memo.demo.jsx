@@ -1,4 +1,4 @@
-import React, { memo, useState, useMemo } from 'react'
+import React, { memo, useState } from 'react'
 
 //memo让一个函数组件变成一个纯组件
 

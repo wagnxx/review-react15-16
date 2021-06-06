@@ -2,7 +2,7 @@ import React from 'react'
 import { Map, List } from 'immutable'
 export default () => {
     // console.log('map',Map)
-    // console.log('list',List)
+    console.log('list',List)
     window.a = Map({
         select: 'users',
         filter: Map({

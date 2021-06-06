@@ -3,27 +3,110 @@
   min-width: 350px;
   max-width: 700px;
 }
+#show ul{
+  /* display: flex;
+  flex-wrap: wrap; */
+  display: grid;
+  grid-template-columns: repeat(4,minmax(240px,1fr));
+  grid-gap: 15px;
+}
 
-
-.sub-page li {
-  display: inline-block;
-  width: 140px;
+#show li {
+  /* display: inline-block; */
+  /* width: 140px; */
   /* height: 120px; */
-  margin: 10px;
-  padding: 4px ;
-  box-sizing: content-box;
-  box-shadow: 1px 1px 1px #ddd, 0 0 1px;
+  /* margin: 10px 10px; */
+  width: 100%;
+  /* padding: 4px ;
+  box-sizing: border-box;
+  */
+ box-shadow: 1px 1px 1px #ddd, 0 0 1px;
 }
 
-.sub-page li img {
-  display: block;
-  /* width: 100%; */
-  margin: auto;
-  height: 80px;
-}
-.sub-page li span {
+ 
+#show li span {
   display: block;
   width: 100%;
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+.conversastion-active{
+  background-color: #1890ff;
+  color: #fff;
+}
+
+.chat-page {
+  display: flex;
+}
+.conversation-window {
+  position: relative;;
+  flex: 1;
+  overflow: hidden;
+  height: calc(100vh - 300px);
+  /* margin-left: 20px; */
+  border: 1px solid #ddd;
+  background: #fff;
+}
+.send-messagebox{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.chat-box{
+  overflow: scroll;
+  height: calc(100vh - 400px);
+}
+.chat-list {
+  padding: 4px;
+  padding-bottom: 60px;
+  /* min-height: calc(100vh - 300px); */
+}
+.chat-list .ant-col {
+  max-width: 80%;
+}
+
+.chat-list .left span {
+ 
+  background: #ece9e9;
+}
+.chat-list .right span {
+  background: #e0f0ff;
+  /* background: #1890ff; */
+}
+.chat-list .left,.chat-list .right{
+  margin-bottom: 2px;
+  
+}
+
+.chat-list .left span,.chat-list .right span{
+  display: inline-block;
+  padding: 4px;
+  word-break: break-all;
+  border-radius: 4px; 
+}
+
+
+
+
+
+
+
+ .trigger {
+  padding: 0 24px;
+  font-size: 18px;
+  line-height: 64px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+ .trigger:hover {
+  color: #1890ff;
+}
+
+ /* .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+} */

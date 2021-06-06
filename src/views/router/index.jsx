@@ -3,9 +3,7 @@ import './index.css'
 
 import {
     BrowserRouter as Router,
-    Redirect,
     Route,
-    Link,
     Switch,
     useHistory,
     useLocation,
@@ -19,6 +17,8 @@ import {
 function HomeButton() {
     let history = useHistory();
     let location = useLocation();
+
+    console.log(location)
 
     function handleClick() {
         history.push("/HOme/123");

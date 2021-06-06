@@ -33,7 +33,7 @@ export default () => (
     <Suspense fallback={'loading ...'} maxDuration={11}>
         <Comp idn={1} />
         <p>suspense 内部普通组件</p>
-        {/* <LazyComp /> */}
+        <LazyComp />
         <Suspense fallback={'loading ...222'} maxDuration={22}>
             <Comp idn={2} />
             <p>suspense2 内部普通组件</p>

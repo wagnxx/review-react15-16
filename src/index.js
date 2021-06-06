@@ -4,7 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <App />
+  // <React.StrictMode>
+  // </React.StrictMode>
+  ,
+
+  document.getElementById('root')
+);
 // ReactDOM.render(<App />, document.getElementById('App'));
 
 // If you want your app to work offline and load faster, you can change

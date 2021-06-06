@@ -1,52 +1,32 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Switch, Link } from 'react-router-dom';
-import RoutesRoot from './routes';
-
+import 'antd/dist/antd.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Dashboard from './components/Dashboard';
+import useLocalStorage from './contexts/useLocalStorage';
+import LoginPage from './views/login';
+import DashboardContextForUserIdProvider from './contexts/dashboardContext';
+import ContactsProvider from './contexts/ContactsProvider';
+import ConversationsProvider from './contexts/ConversationsProvider';
+import SocketProvider from './contexts/SocketProvider';
+import WindowResizeContextProvider from './contexts/WindowResizeContextProvider';
 
 export default function App() {
-  return (
-    <Router>
-      <div className="app">
-        <ul className="header">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/login">login</Link>
-          </li>
-          <li>
-            <Link to="/product">product</Link>
-          </li>
-          <li>
-            <Link to="/manage">manage</Link>
-          </li>
-          <li>
-            <Link to="/hooks">hooks</Link>
-          </li>
-          <li>
-            <Link to="/RouterTestPage">RouterTestPage</Link>
-          </li>
-          <li>
-            <Link to="/CustReduxPage">CustReduxPage</Link>
-          </li>
-          <li>
-            <Link to="/SchedulePage">源码&fiber</Link>
-          </li>
-          <li>
-            <Link to="/immutable">immutable</Link>
-          </li>
-          <li>
-            <Link to="/basic">basicjs</Link>
-          </li>
-        </ul>
+  const [id, setId] = useLocalStorage('id');
 
-        <div className="main">
-          <Switch>
-            <RoutesRoot />
-          </Switch>
-        </div>
-      </div>
-    </Router>
+  const dashboard = (
+    <SocketProvider id={id}>
+      <DashboardContextForUserIdProvider id={id}>
+        <ContactsProvider>
+          <ConversationsProvider id={id}>
+            <WindowResizeContextProvider>
+              <Dashboard />
+            </WindowResizeContextProvider>
+          </ConversationsProvider>
+        </ContactsProvider>
+      </DashboardContextForUserIdProvider>
+    </SocketProvider>
   );
+
+  return <Router>{id ? dashboard : <LoginPage onIdSubmit={setId} />}</Router>;
 }

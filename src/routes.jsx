@@ -2,7 +2,7 @@ import React from 'react';
 import {
     Redirect,
     Route,
-  
+
 } from 'react-router-dom';
 
 // routes page
@@ -17,18 +17,20 @@ import SchedulePage from './views/schedule';
 import ImmutablePage from './views/immutable/index';
 import BasicJsPage from './views/basicjs'
 
-export default () => (
-    <>
-        <Route path="/home" component={HomePage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/product" component={ProductPage} />
-        <Route path="/hooks" component={HooksPage} />
-        <Route path="/manage" component={ManagePage} />
-        <Route path="/RouterTestPage" component={RouterTestPage} />
-        <Route path="/CustReduxPage"  component={CustReduxPage} />
-        <Route path="/SchedulePage"  component={SchedulePage}  />
-        <Route path="/immutable"  component={ImmutablePage}  />
-        <Route path="/basic"  component={BasicJsPage}  />
-        <Redirect path="/" exact to={{ pathname: '/basic' }} />
-    </>
-);
+export default (props) => {
+    return (
+        <>
+            <Route path="/home" component={HomePage} />
+            <Route path="/login" component={LoginPage} />
+            <Route path="/product" component={ProductPage} />
+            <Route path="/hooks" component={HooksPage} />
+            <Route path="/manage" component={ManagePage} />
+            <Route path="/RouterTestPage" component={RouterTestPage} />
+            <Route path="/CustReduxPage" component={CustReduxPage} />
+            <Route path="/SchedulePage" component={SchedulePage} />
+            <Route path="/immutable" component={ImmutablePage} />
+            <Route path="/basic" component={BasicJsPage} />
+            <Redirect path="/" exact to={{ pathname: '/basic' }} />
+        </>
+    )
+}

@@ -13,9 +13,9 @@ DBOpenRequest.onsuccess = function (event) {
 
 DBOpenRequest.onupgradeneeded = function (event) {
   db = event.target.result;
-  let personStore;
+  // let personStore;
   if (!db.objectStoreNames.contains(STORE_NAME)) {
-    personStore = db.createObjectStore(STORE_NAME, {
+    db.createObjectStore(STORE_NAME, {
       keyPath: 'id',
       autoIncrement: true,
     });
@@ -23,6 +23,8 @@ DBOpenRequest.onupgradeneeded = function (event) {
     // personStore.createIndex('email', 'email', { unique: true });
   }
 };
+
+
 
 function getObjectStore(store_name, mode) {
   var tx = db.transaction([store_name], mode);
@@ -34,4 +36,4 @@ const MODE = {
   READ:'readonly'
 }
 
-export { getObjectStore,STORE_NAME, MODE };
+export { getObjectStore,STORE_NAME, MODE ,db};
