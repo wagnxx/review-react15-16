@@ -5,7 +5,6 @@ import { useConversations } from '../../../../contexts/ConversationsProvider';
 
 export default function Conversations({opendConversation}) {
   const { conversations, selectConversationIndex } = useConversations();
-  console.log(conversations)
 
   const handleActive = index => {
     opendConversation()

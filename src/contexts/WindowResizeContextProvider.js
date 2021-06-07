@@ -20,7 +20,6 @@ export default function WindowResizeContextProvider({ children }) {
 
   function resize() {
     const width = window.innerWidth;
-    console.log('hiiiiii  I AM Risized =====> ', width);
 
     setscreenWidth(width);
     if (width <= 600) {

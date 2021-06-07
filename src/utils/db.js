@@ -1,51 +1,53 @@
-const DB_NAME = 'fe_2';
-const STORE_NAME = 'person';
-const DB_VERSION = 3;
+const DB_NAME = 'fe_whatsapp_db';
+const STORE_NAME = 'files_store';
+const DB_VERSION = 1;
 
-function CreateDB(dbName, dbVersion, opts) {
+function DBFunctor(dbName, dbVersion, opts) {
   this.init(dbName, dbVersion);
-  this.__opts__ = opts;
+  this.__opts__ = opts || {};
   let DBOpenRequest = this.openDB();
-  this.eventListener(DBOpenRequest);
+  this.eventListener( DBOpenRequest);
 }
-CreateDB.prototype.init = function (dbName, dbVersion) {
+DBFunctor.prototype.init = function (dbName, dbVersion) {
   this.name = dbName;
   this.version = dbVersion;
 };
-CreateDB.prototype.openDB = function () {
+DBFunctor.prototype.openDB = function () {
   return window.indexedDB.open(this.name, this.version);
 };
-CreateDB.prototype.createDefaultStore = function () {
-  if (!db.objectStoreNames.contains(STORE_NAME)) {
+DBFunctor.prototype.createDefaultStore = function () {
+  if (!this.db.objectStoreNames.contains(STORE_NAME)) {
     this.db.createObjectStore(STORE_NAME, {
       keyPath: 'id',
       autoIncrement: true,
     });
+    console.log('创建一个新的空数据库')
     // personStore.createIndex('name', 'name', { unique: false });
     // personStore.createIndex('email', 'email', { unique: true });
   }
 };
-CreateDB.prototype.eventListener = function (DBOpenRequest) {
+DBFunctor.prototype.eventListener = function (DBOpenRequest) {
+  let _this = this;
   DBOpenRequest.onerror = function (event) {
-    console.log('db open err', event.target.errorCode);
+    console.log('db open err', event);
   };
   DBOpenRequest.onsuccess = function (event) {
-    this.db = event.target.result;
+    _this.db = event.target.result;
   };
 
   DBOpenRequest.onupgradeneeded = function (event) {
-    this.db = event.target.result;
+    _this.db = event.target.result;
     if (
-      this.__opts__.callback &&
-      typeof this.__opts__.callback === 'function'
+      _this.__opts__.callback &&
+      typeof _this.__opts__.callback === 'function'
     ) {
-      this.__opts__.callback(this.db);
+      _this.__opts__.callback(_this.db);
     } else {
-      this.createDefaultStore();
+      _this.createDefaultStore();
     }
   };
 };
-CreateDB.prototype.createStore = function (storeName) {
+DBFunctor.prototype.createStore = function (storeName) {
   if (!db.objectStoreNames.contains(storeName)) {
     return this.db.createObjectStore(storeName, {
       keyPath: 'id',
@@ -53,7 +55,7 @@ CreateDB.prototype.createStore = function (storeName) {
     });
   }
 };
-CreateDB.prototype.getStore = function (storeName, mode) {
+DBFunctor.prototype.getStore = function (storeName, mode) {
   var tx = this.db.transaction([storeName], mode);
   return tx.objectStore(storeName);
 };
@@ -62,7 +64,7 @@ let dbInstFunctory = function (n = DB_NAME, v = DB_VERSION, o = {}) {
   let db;
   return function create() {
     if (db) return db;
-    return (db = new CreateDB(n, v, o));
+    return (db = new DBFunctor(n, v, o));
   };
 };
 

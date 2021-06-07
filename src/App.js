@@ -10,6 +10,7 @@ import ContactsProvider from './contexts/ContactsProvider';
 import ConversationsProvider from './contexts/ConversationsProvider';
 import SocketProvider from './contexts/SocketProvider';
 import WindowResizeContextProvider from './contexts/WindowResizeContextProvider';
+import DBContextProvider from './contexts/DBContextProvider';
 
 export default function App() {
   const [id, setId] = useLocalStorage('id');
@@ -20,7 +21,9 @@ export default function App() {
         <ContactsProvider>
           <ConversationsProvider id={id}>
             <WindowResizeContextProvider>
-              <Dashboard />
+              <DBContextProvider>
+                <Dashboard />
+              </DBContextProvider>
             </WindowResizeContextProvider>
           </ConversationsProvider>
         </ContactsProvider>
