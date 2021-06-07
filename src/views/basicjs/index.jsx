@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -53,9 +53,8 @@ export default () => {
                 })}
                 该页面包含基础
             </Header>
+
             <Layout>
-
-
                 {
                     isPhoneClient ?
                         <Layout>
@@ -65,20 +64,16 @@ export default () => {
 
                         siderComp
                 }
-
                 <Content>
-
                     <Switch>
                         <Route path='/basic/indexDB' component={IndexDBPage} />
                         <Route path='/basic/socket' component={SocketPage} />
                         <Route path='/basic/cssGridPage' component={CssGridPage} />
-
                         <Redirect path="/basic" exact to={{ pathname: '/basic/socket' }} />
                     </Switch>
-
                 </Content>
-
             </Layout>
+
         </Layout>
     </Router>
 

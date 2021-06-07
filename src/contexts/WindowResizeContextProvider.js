@@ -1,9 +1,7 @@
 import React from 'react';
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { createContext } from 'react';
 import { useContext } from 'react';
-// import {getObjectStore} from '../utils/db'
-const PREFIX = 'whatsapp-clone-';
 
 const WindwoSizeContext = createContext();
 export const useWindowResized = () => useContext(WindwoSizeContext);
@@ -13,10 +11,6 @@ export default function WindowResizeContextProvider({ children }) {
     if (screenWidth <= 600) return true;
     return false;
   });
-
-  // const controllFunc = useCallback(controllFre,
-  //   []
-  // )
 
   function resize() {
     const width = window.innerWidth;
@@ -35,29 +29,10 @@ export default function WindowResizeContextProvider({ children }) {
   }, []);
 
   return (
-    <WindwoSizeContext.Provider value={{ screenWidth,isPhoneClient }}>
+    <WindwoSizeContext.Provider value={{ screenWidth, isPhoneClient }}>
       {children}
     </WindwoSizeContext.Provider>
   );
-}
-
-function controllFre(fn, time) {
-  let timeout;
-
-  return function () {
-    let ctx = this;
-    if (timeout) {
-      clearTimeout(timeout);
-    }
-
-    let callNow = !timeout;
-
-    timeout = setTimeout(function () {
-      timeout = null;
-    }, time);
-
-    callNow && fn.apply(ctx, arguments);
-  };
 }
 
 function debounce(func, wait) {
@@ -74,16 +49,16 @@ function debounce(func, wait) {
   };
 }
 
-function throttle(fn, wait) {
-  let lastTime = Date.now();
+// function throttle(fn, wait) {
+//   let lastTime = Date.now();
 
-  return function () {
-    let args = arguments;
-    let now = Date.now();
+//   return function () {
+//     let args = arguments;
+//     let now = Date.now();
 
-    if (now - lastTime > wait) {
-      fn.apply(this, args);
-      lastTime = now;
-    }
-  };
-}
+//     if (now - lastTime > wait) {
+//       fn.apply(this, args);
+//       lastTime = now;
+//     }
+//   };
+// }

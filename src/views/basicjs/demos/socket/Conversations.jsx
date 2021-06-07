@@ -2,6 +2,7 @@ import React from 'react'
 
 import { List } from 'antd';
 import { useConversations } from '../../../../contexts/ConversationsProvider';
+// import { useDBContext } from '../../../contexts/DBContextProvider';
 
 export default function Conversations({opendConversation}) {
   const { conversations, selectConversationIndex } = useConversations();

@@ -4,7 +4,6 @@ import { List } from 'antd';
 
 export default function Contacts() {
   const { contacts } = useContacts();
-  console.log(contacts)
 
   return (
 

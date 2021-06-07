@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import { Form, Input, Button, Checkbox } from 'antd'
+import { Form, Button, Checkbox } from 'antd'
 import { useContacts } from '../../../../contexts/ContactsProvider';
 import { useConversations } from '../../../../contexts/ConversationsProvider';
 
 export default function NewConversationModal({ closeModal }) {
   const { contacts } = useContacts();
-  const {createConversation} = useConversations();
+  const { createConversation } = useConversations();
   const [selectedContactIds, setSelectedContactIds] = useState([])
 
   const onFinish = (value) => {
@@ -18,20 +18,20 @@ export default function NewConversationModal({ closeModal }) {
 
     setSelectedContactIds(prevSelectedIds => {
       if (checked) {
-        return [...new Set([...prevSelectedIds,item.id])];
+        return [...new Set([...prevSelectedIds, item.id])];
       } else {
         return prevSelectedIds.filter(id => id !== item.id);
       }
     })
   }
-  
+
   return (
     <div>
       <div>
         <Form onFinish={onFinish}>
 
           {
-            contacts.map((contact,index) => (
+            contacts.map((contact, index) => (
               <Form.Item
                 key={index}
               >

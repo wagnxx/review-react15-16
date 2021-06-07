@@ -29,13 +29,13 @@ export default function SocketPage() {
   const { selectedConversation } = useConversations();
   const { isPhoneClient } = useWindowResized();
   const onBack = () => {
-    isPhoneClient && setConversationOpened(false)
+    setConversationOpened(false)
   }
   const opendConversation = () => {
-    isPhoneClient && setConversationOpened(true)
+    setConversationOpened(true)
   }
   return (
-    <div className="chat-page__">
+    <div className="socket-page">
       <Row
         justify="start"
         wrap={true}
@@ -52,7 +52,7 @@ export default function SocketPage() {
         </Col>
 
         {
-          !conversationOpened && isPhoneClient ? '' :
+          !conversationOpened ? '' :
 
             <Col {...layout.content}>
               {selectedConversation &&

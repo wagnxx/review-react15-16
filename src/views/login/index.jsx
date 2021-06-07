@@ -1,8 +1,7 @@
-import React,{useEffect} from 'react'
+import React from 'react'
 import { Form, Input, Button } from 'antd';
-import {v4 as uuid} from 'uuid'
-import { useLocation } from 'react-router-dom';
-// const { Option } = Select;
+import { v4 as uuid } from 'uuid'
+
 const layout = {
     labelCol: {
         span: 24,
@@ -18,8 +17,7 @@ const tailLayout = {
     },
 };
 
-export default ({onIdSubmit}) => {
-    const location = useLocation();
+export default ({ onIdSubmit }) => {
 
     const [form] = Form.useForm();
 
@@ -35,11 +33,7 @@ export default ({onIdSubmit}) => {
     const createNewId = () => {
         onIdSubmit(uuid())
     }
-    
-    useEffect(() => {
-        console.log('location',location)
-    
-    }, [])
+
 
     return <div className='login-page' style={{ width: '500px', margin: 'auto' }}>
         <Form

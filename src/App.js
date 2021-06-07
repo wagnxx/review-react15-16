@@ -17,17 +17,17 @@ export default function App() {
 
   const dashboard = (
     <SocketProvider id={id}>
-      <DashboardContextForUserIdProvider id={id}>
-        <ContactsProvider>
-          <ConversationsProvider id={id}>
-            <WindowResizeContextProvider>
-              <DBContextProvider>
+      <DBContextProvider>
+        <WindowResizeContextProvider>
+          <ContactsProvider>
+            <ConversationsProvider id={id}>
+              <DashboardContextForUserIdProvider id={id}>
                 <Dashboard />
-              </DBContextProvider>
-            </WindowResizeContextProvider>
-          </ConversationsProvider>
-        </ContactsProvider>
-      </DashboardContextForUserIdProvider>
+              </DashboardContextForUserIdProvider>
+            </ConversationsProvider>
+          </ContactsProvider>
+        </WindowResizeContextProvider>
+      </DBContextProvider>
     </SocketProvider>
   );
 

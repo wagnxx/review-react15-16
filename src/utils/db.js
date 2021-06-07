@@ -6,26 +6,31 @@ function DBFunctor(dbName, dbVersion, opts) {
   this.init(dbName, dbVersion);
   this.__opts__ = opts || {};
   let DBOpenRequest = this.openDB();
-  this.eventListener( DBOpenRequest);
+  this.eventListener(DBOpenRequest);
 }
+
 DBFunctor.prototype.init = function (dbName, dbVersion) {
   this.name = dbName;
   this.version = dbVersion;
 };
+
 DBFunctor.prototype.openDB = function () {
   return window.indexedDB.open(this.name, this.version);
 };
+
 DBFunctor.prototype.createDefaultStore = function () {
   if (!this.db.objectStoreNames.contains(STORE_NAME)) {
     this.db.createObjectStore(STORE_NAME, {
       keyPath: 'id',
       autoIncrement: true,
     });
-    console.log('创建一个新的空数据库')
+    console.log('创建一个新的空数据库');
     // personStore.createIndex('name', 'name', { unique: false });
     // personStore.createIndex('email', 'email', { unique: true });
   }
 };
+
+
 DBFunctor.prototype.eventListener = function (DBOpenRequest) {
   let _this = this;
   DBOpenRequest.onerror = function (event) {
@@ -47,8 +52,10 @@ DBFunctor.prototype.eventListener = function (DBOpenRequest) {
     }
   };
 };
+
+
 DBFunctor.prototype.createStore = function (storeName) {
-  if (!db.objectStoreNames.contains(storeName)) {
+  if (!this.objectStoreNames.contains(storeName)) {
     return this.db.createObjectStore(storeName, {
       keyPath: 'id',
       autoIncrement: true,
@@ -71,7 +78,12 @@ let dbInstFunctory = function (n = DB_NAME, v = DB_VERSION, o = {}) {
 let db = dbInstFunctory()();
 
 function getObjectStore(store_name = STORE_NAME, mode = MODE.READ) {
-  return db.getStore(store_name, mode);
+  if (db) {
+    return db.getStore(store_name, mode);
+  } else {
+    db = dbInstFunctory()();
+    return null;
+  }
 }
 
 const MODE = {

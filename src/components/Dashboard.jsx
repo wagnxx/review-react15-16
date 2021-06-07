@@ -1,11 +1,10 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Switch, Link, BrowserRouter as Router } from 'react-router-dom';
+import { Switch, Link, } from 'react-router-dom';
 import RoutesRoot from '../routes';
 
 import { Layout, Menu, Breadcrumb } from 'antd';
-import DashboardContext from '../contexts/dashboardContext';
-import ContactsProvider from '../contexts/ContactsProvider';
+
 
 const { Header, Content, Footer } = Layout;
 
@@ -16,7 +15,7 @@ export default function Dashboard() {
 
       <Layout className="layout">
         <Header
-         style={{zIndex:'999'}}
+          style={{ zIndex: '999' }}
         >
 
           <Menu
@@ -61,30 +60,30 @@ export default function Dashboard() {
         <Content
           style={{
             padding: '0 10px',
-            height: 'calc(100vh - 130px)',
+            height: 'calc(100vh - 88px)',
             overflow: 'scroll',
           }}
         >
-          <Breadcrumb style={{ margin: '16px 0' }}>
+          {/* <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>Home</Breadcrumb.Item>
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
+          </Breadcrumb> */}
           <div style={{ background: '#fff', minHeight: 280 }}>
             <Switch>
               <RoutesRoot />
             </Switch>
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          reactJS系列及周边 ©2021 Created by wangxx
-      </Footer>
+        {/* <Footer style={{ textAlign: 'center' }}>
+            reactJS系列及周边 ©2021 Created by wangxx
+        </Footer>  */}
       </Layout>
 
     </>
-   
 
-      
-  
+
+
+
   );
 }

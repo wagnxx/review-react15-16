@@ -1,11 +1,9 @@
 import React from 'react'
-import useLocalStorage from '../../../../contexts/useLocalStorage';
-import { useDashboardContext } from '../../../../contexts/dashboardContext';
 import { useState } from 'react';
 import Conversations from './Conversations';
 import Contacts from './Contacts';
 
-import { Tabs, Nav, Layout, Button, Modal } from 'antd'
+import { Tabs, Button, Modal } from 'antd'
 import NewConversationModal from './NewConversationModal';
 import NewContactModal from './NewContactModal'
 
@@ -13,7 +11,7 @@ const { TabPane } = Tabs;
 const CONVERSATIONS_KEY = 'Conversations';
 const CONTACTS_KEY = 'contacts';
 
-export default function SiderBar({ id ,opendConversation}) {
+export default function SiderBar({ id, opendConversation }) {
 
   const [activeKey, setActiveKey] = useState(CONVERSATIONS_KEY);
   const [modalOpen, setModalOpen] = useState(false);
@@ -30,8 +28,8 @@ export default function SiderBar({ id ,opendConversation}) {
   }
 
   return (
-    <div style={{border: '1px solid #ddd',background:'#fff', height: 'calc(100vh - 300px)' }}>
-      <Tabs style={{ height: ' calc(100% - 86px)' }} defaultActiveKey={activeKey} onChange={callback}>
+    <div className="sider-bar">
+      <Tabs style={{ height: ' calc(100% - 64px)' }} type="card" defaultActiveKey={activeKey} onChange={callback}>
         <TabPane tab="Conversations" key={CONVERSATIONS_KEY}>
           <Conversations opendConversation={opendConversation} />
         </TabPane>
@@ -41,13 +39,13 @@ export default function SiderBar({ id ,opendConversation}) {
 
 
       </Tabs>
-     
+
       <div style={{ border: '1px solid #ddd' }}>
 
         Your Id: <span>{id}</span>
 
       </div>
-      <Button  onClick={() => setModalOpen(true)} type="primary" block size="large">
+      <Button onClick={() => setModalOpen(true)} type="primary" block size="large">
         {conversationsOpen ? 'New Conversation' : 'New Contact'}
       </Button>
 
@@ -62,8 +60,8 @@ export default function SiderBar({ id ,opendConversation}) {
       >
         {
           conversationsOpen ?
-            <NewConversationModal closeModal={closeModal}/> :
-            <NewContactModal closeModal={closeModal}/> 
+            <NewConversationModal closeModal={closeModal} /> :
+            <NewContactModal closeModal={closeModal} />
         }
       </Modal>
 
