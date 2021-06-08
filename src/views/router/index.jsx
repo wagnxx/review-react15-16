@@ -47,20 +47,31 @@ function BlogPost() {
     return <h2>{match.params.slug}</h2>;
 }
 
+const About = () => <div>About page</div>
+const NOtFound = () => <div>NOtFound page</div>
 
 export default () => {
-    return <div>router test page!
+    return <div>
+        <h2>
+            router test page!
+        </h2>
 
-        <Router  basename="/RouterTestPage">
-            <li><NavLink  exact activeClassName='selected' to='/about'>about</NavLink></li>
-            <li><NavLink exact  activeClassName='selected' to='/Home'>home</NavLink></li>
+        <Router basename="/RouterTestPage">
+            <li><NavLink exact activeClassName='selected' to='/about'>about</NavLink></li>
+            <li><NavLink exact activeClassName='selected' to='/home'>home</NavLink></li>
             <li><NavLink exact activeClassName='selected' to='/me'>me</NavLink></li>
-            <li><HomeButton /></li>
+            {/* <li><HomeButton /></li> */}
             <Switch>
+
+                <Route path='/home' component={Home} />
+                <Route path='/about' component={About} />
+                <Route component={NOtFound} />
+            </Switch>
+            {/* <Switch>
                 <Route path='/HoME/:slug' sensitive={false} component={Home} />
                 <BlogPost />
 
-            </Switch>
+            </Switch> */}
         </Router>
     </div>
 }

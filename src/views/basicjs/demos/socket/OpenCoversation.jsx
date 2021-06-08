@@ -1,16 +1,10 @@
 import React, { useCallback, useState, Suspense, lazy } from 'react'
-
-import { Row, Col, Form, Input, Tag, PageHeader } from 'antd';
-
-import { useConversations } from '../../../../contexts/ConversationsProvider';
-import { getFilesStoreReadOnly, getFilesStoreReadWrite } from '../../../../contexts/DBContextProvider';
-import { Upload, Button } from 'antd';
+import { Row, Col, Form, Input, Tag, PageHeader, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-
-import ImgLazyComp from './LazyImgComp';
-import { useEffect } from 'react';
-
+import { useConversations } from '../../../../contexts/ConversationsProvider';
 import PortalsModal from '../../../../components/PortalsModal'
+import ImgLazyComp from './LazyImgComp';
+
 
 export default function OpenCoversation({ onBack }) {
 

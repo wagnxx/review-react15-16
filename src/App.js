@@ -1,10 +1,8 @@
 import React from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import useLocalStorage from './contexts/useLocalStorage';
-import LoginPage from './views/login';
 import DashboardContextForUserIdProvider from './contexts/dashboardContext';
 import ContactsProvider from './contexts/ContactsProvider';
 import ConversationsProvider from './contexts/ConversationsProvider';
@@ -15,7 +13,7 @@ import DBContextProvider from './contexts/DBContextProvider';
 export default function App() {
   const [id, setId] = useLocalStorage('id');
 
-  const dashboard = (
+  return (
     <SocketProvider id={id}>
       <DBContextProvider>
         <WindowResizeContextProvider>
@@ -30,6 +28,4 @@ export default function App() {
       </DBContextProvider>
     </SocketProvider>
   );
-
-  return <Router>{id ? dashboard : <LoginPage onIdSubmit={setId} />}</Router>;
 }

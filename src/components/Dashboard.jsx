@@ -1,9 +1,9 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import { Switch, Link, } from 'react-router-dom';
+import { Switch, NavLink, BrowserRouter as Router } from 'react-router-dom';
 import RoutesRoot from '../routes';
-
 import { Layout, Menu, Breadcrumb } from 'antd';
+import './dashboard.css'
 
 
 const { Header, Content, Footer } = Layout;
@@ -11,7 +11,10 @@ const { Header, Content, Footer } = Layout;
 export default function Dashboard() {
 
   return (
-    <>
+
+    <Router basename="/app">
+
+
 
       <Layout className="layout">
         <Header
@@ -22,38 +25,40 @@ export default function Dashboard() {
             theme="dark"
             mode="horizontal"
             // mode="inline"
-            defaultSelectedKeys={['2']}
+            defaultSelectedKeys={['1']}
             style={{ lineHeight: '64px' }}
           >
             <Menu.Item key="1">
-              <Link to="/">Home</Link>
+              <NavLink activeClassName="navSelected" to="/home" >
+                Home
+            </NavLink>
             </Menu.Item>
             <Menu.Item key="2">
-              <Link to="/login">login</Link>
+              <NavLink activeClassName="navSelected" to="/login">login</NavLink>
             </Menu.Item>
             <Menu.Item key="3">
-              <Link to="/product">product</Link>
+              <NavLink activeClassName="navSelected" to="/product">product</NavLink>
             </Menu.Item>
             <Menu.Item key="4">
-              <Link to="/manage">manage</Link>
+              <NavLink activeClassName="navSelected" to="/manage">manage</NavLink>
             </Menu.Item>
             <Menu.Item key="5">
-              <Link to="/hooks">hooks</Link>
+              <NavLink activeClassName="navSelected" to="/hooks">hooks</NavLink>
             </Menu.Item>
             <Menu.Item key="6">
-              <Link to="/RouterTestPage">RouterTestPage</Link>
+              <NavLink activeClassName="navSelected" to="/RouterTestPage">RouterTestPage</NavLink>
             </Menu.Item>
             <Menu.Item key="7">
-              <Link to="/CustReduxPage">CustReduxPage</Link>
+              <NavLink activeClassName="navSelected" to="/CustReduxPage">CustReduxPage</NavLink>
             </Menu.Item>
             <Menu.Item key="8">
-              <Link to="/SchedulePage">源码&fiber</Link>
+              <NavLink activeClassName="navSelected" to="/SchedulePage">源码&fiber</NavLink>
             </Menu.Item>
             <Menu.Item key="9">
-              <Link to="/immutable">immutable</Link>
+              <NavLink activeClassName="navSelected" to="/immutable">immutable</NavLink>
             </Menu.Item>
             <Menu.Item key="10">
-              <Link to="/basic">basic</Link>
+              <NavLink activeClassName="navSelected" to="/basic">basic</NavLink>
             </Menu.Item>
           </Menu>
         </Header>
@@ -70,7 +75,8 @@ export default function Dashboard() {
             <Breadcrumb.Item>App</Breadcrumb.Item>
           </Breadcrumb> */}
           <div style={{ background: '#fff', minHeight: 280 }}>
-            <Switch>
+            <Switch
+            >
               <RoutesRoot />
             </Switch>
           </div>
@@ -80,10 +86,8 @@ export default function Dashboard() {
         </Footer>  */}
       </Layout>
 
-    </>
 
-
-
+    </Router>
 
   );
 }

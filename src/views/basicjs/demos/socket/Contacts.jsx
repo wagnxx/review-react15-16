@@ -2,6 +2,7 @@ import React from 'react'
 import { useContacts } from '../../../../contexts/ContactsProvider'
 import { List } from 'antd';
 
+
 export default function Contacts() {
   const { contacts } = useContacts();
 

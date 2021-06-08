@@ -2,6 +2,7 @@ import React from 'react';
 import {
     Redirect,
     Route,
+    useLocation,
 
 } from 'react-router-dom';
 
@@ -17,12 +18,22 @@ import SchedulePage from './views/schedule';
 import ImmutablePage from './views/immutable/index';
 import BasicJsPage from './views/basicjs'
 
+const RequireAuthentication = ({ PendingComponent, path, children, ...rest }) => {
+
+    const location = useLocation();
+
+    if (location.pathname === path)
+        return <Route path={path} {...rest} render={() => <PendingComponent />} />
+
+    return null;
+}
+
 export default (props) => {
     return (
         <>
             <Route path="/home" component={HomePage} />
             <Route path="/login" component={LoginPage} />
-            <Route path="/product" component={ProductPage} />
+            <RequireAuthentication path="/product" PendingComponent={ProductPage} {...props} />
             <Route path="/hooks" component={HooksPage} />
             <Route path="/manage" component={ManagePage} />
             <Route path="/RouterTestPage" component={RouterTestPage} />
@@ -30,7 +41,8 @@ export default (props) => {
             <Route path="/SchedulePage" component={SchedulePage} />
             <Route path="/immutable" component={ImmutablePage} />
             <Route path="/basic" component={BasicJsPage} />
-            <Redirect path="/" exact to={{ pathname: '/basic' }} />
+
+            <Redirect path="/" to={{ pathname: '/basic' }} />
         </>
     )
 }
