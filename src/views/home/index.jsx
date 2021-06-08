@@ -47,10 +47,10 @@ export default function SocketPage() {
               <SiderBar opendConversation={opendConversation} id={dashContext.id} />
             </Col>
         }
-
+        {/* 
         <Col xs={{ span: 24 }} sm={{ span: 0 }} style={{ margin: '10px 0' }}>
 
-        </Col>
+        </Col> */}
 
         {
           !conversationOpened ? '' :

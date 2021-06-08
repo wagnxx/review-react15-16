@@ -29,7 +29,7 @@ export default function SiderBar({ id, opendConversation }) {
 
   return (
     <div className="sider-bar">
-      <Tabs style={{ height: ' calc(100% - 64px)' }} type="card" defaultActiveKey={activeKey} onChange={callback}>
+      <Tabs style={{ height: ' calc(100vh - 64px)' }} type="card" defaultActiveKey={activeKey} onChange={callback}>
         <TabPane tab="Conversations" key={CONVERSATIONS_KEY}>
           <Conversations opendConversation={opendConversation} />
         </TabPane>

@@ -16,7 +16,7 @@ export default function Dashboard() {
       <Content
         style={{
           padding: '0',
-          height: 'calc(100vh - 0)',
+          height: '100vh',
           overflow: 'scroll',
         }}
       >
