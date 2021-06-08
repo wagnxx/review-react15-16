@@ -1,10 +1,9 @@
 import React from 'react'
 
 import { List } from 'antd';
-import { useConversations } from '../../../../contexts/ConversationsProvider';
-// import { useDBContext } from '../../../contexts/DBContextProvider';
+import { useConversations } from '@/contexts/ConversationsProvider';
 
-export default function Conversations({opendConversation}) {
+export default function Conversations({ opendConversation }) {
   const { conversations, selectConversationIndex } = useConversations();
 
   const handleActive = index => {

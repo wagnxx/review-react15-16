@@ -1,8 +1,8 @@
 import React, { useCallback, useState, Suspense, lazy } from 'react'
 import { Row, Col, Form, Input, Tag, PageHeader, Upload, Button } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-import { useConversations } from '../../../../contexts/ConversationsProvider';
-import PortalsModal from '../../../../components/PortalsModal'
+import { useConversations } from '@/contexts/ConversationsProvider';
+import PortalsModal from '@/components/PortalsModal'
 import ImgLazyComp from './LazyImgComp';
 
 

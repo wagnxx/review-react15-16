@@ -1,6 +1,6 @@
-import React, { lazy, Suspense, useState } from 'react'
+import React, { Suspense } from 'react'
 
-import { getFilesStoreReadOnly, getFilesStoreReadWrite, db } from '../../../../contexts/DBContextProvider';
+import { getFilesStoreReadWrite } from '@/contexts/DBContextProvider';
 
 
 let data = null;

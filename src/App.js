@@ -10,10 +10,12 @@ import SocketProvider from './contexts/SocketProvider';
 import WindowResizeContextProvider from './contexts/WindowResizeContextProvider';
 import DBContextProvider from './contexts/DBContextProvider';
 
+import LoginPage from '@/views/login';
+
 export default function App() {
   const [id, setId] = useLocalStorage('id');
 
-  return (
+  const dashboard = (
     <SocketProvider id={id}>
       <DBContextProvider>
         <WindowResizeContextProvider>
@@ -28,4 +30,6 @@ export default function App() {
       </DBContextProvider>
     </SocketProvider>
   );
+
+  return id ? dashboard : <LoginPage onIdSubmit={setId} />;
 }

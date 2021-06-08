@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button, Checkbox } from 'antd'
-import { useContacts } from '../../../../contexts/ContactsProvider';
-import { useConversations } from '../../../../contexts/ConversationsProvider';
+import { useContacts } from '@/contexts/ContactsProvider';
+import { useConversations } from '@/contexts/ConversationsProvider';
 
 export default function NewConversationModal({ closeModal }) {
   const { contacts } = useContacts();

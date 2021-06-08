@@ -1,8 +1,6 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd';
 import { v4 as uuid } from 'uuid'
-import useLocalStorage from '../../contexts/useLocalStorage';
-import { useHistory } from "react-router-dom";
 
 const layout = {
     labelCol: {
@@ -19,14 +17,7 @@ const tailLayout = {
     },
 };
 
-export default () => {
-    const [id, onIdSubmit] = useLocalStorage('id');
-    let history = useHistory();
-
-    if (id) {
-        history.replace("/home");
-    }
-
+export default ({ onIdSubmit }) => {
 
     const [form] = Form.useForm();
 

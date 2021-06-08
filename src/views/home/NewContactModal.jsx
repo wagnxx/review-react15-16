@@ -1,9 +1,9 @@
 import React from 'react'
 import { Form, Input, Button } from 'antd'
-import { useContacts } from '../../../../contexts/ContactsProvider'
+import { useContacts } from '@/contexts/ContactsProvider'
 
 export default function NewContactModal({ closeModal }) {
-  const {createContact} = useContacts();
+  const { createContact } = useContacts();
   const onFinish = (value) => {
     createContact(value)
     closeModal();
@@ -26,7 +26,7 @@ export default function NewContactModal({ closeModal }) {
           >
             <Input />
           </Form.Item>
-          <Form.Item wrapperCol={{span:2,offset:20}}> 
+          <Form.Item wrapperCol={{ span: 2, offset: 20 }}>
             <Button type="primary" htmlType="submit">Create</Button>
           </Form.Item>
         </Form>

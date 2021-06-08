@@ -1,5 +1,5 @@
 import React from 'react';
-import { createContext, useEffect, useContext, useCallback } from 'react';
+import { createContext, useContext } from 'react';
 import { getObjectStore, STORE_NAME, MODE, db } from '../utils/db';
 
 const DBContext = createContext();
@@ -19,18 +19,6 @@ export const getFilesStoreReadOnly = () => getFilesStore(MODE.READ);
 export const getFilesStoreReadWrite = () => getFilesStore(MODE.READ_WRITE);
 
 export default function DBContextProvider({ children }) {
-  // const [filesStoreReadOnly, setFilesStoreReadOnly] = useState(null)
-  // const [filesStoreReadWrite, setFilesStoreReadWrite] = useState(null)
-
-  useEffect(() => {
-    if (db) {
-      setTimeout(() => {
-        // setFilesStoreReadOnly(getFetch(MODE.READ))
-        // setFilesStoreReadWrite(getFetch(MODE.READ_WRITE))
-      }, 1000);
-    }
-  }, []);
-
   return (
     <DBContext.Provider
       value={{ getFilesStoreReadOnly, getFilesStoreReadWrite, db }}

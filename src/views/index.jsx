@@ -16,7 +16,7 @@ import {
 
 } from '@ant-design/icons';
 
-import { useWindowResized } from '../../contexts/WindowResizeContextProvider';
+import { useWindowResized } from '../contexts/WindowResizeContextProvider';
 import IndexDBPage from './demos/indexDB/indexDB'
 import SocketPage from './demos/socket'
 import CssGridPage from './demos/css/cssGrid'
