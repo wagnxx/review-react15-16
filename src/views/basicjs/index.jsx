@@ -20,6 +20,7 @@ import { useWindowResized } from '../../contexts/WindowResizeContextProvider';
 import IndexDBPage from './demos/indexDB/indexDB'
 import SocketPage from './demos/socket'
 import CssGridPage from './demos/css/cssGrid'
+import CssLayout from './demos/css/cssLayout'
 import './index.css'
 
 const { Header, Content, Sider } = Layout;
@@ -37,6 +38,7 @@ export default () => {
                 <Menu.Item key="1"><Link to='/basic/indexDB'>indexDB</Link></Menu.Item>
                 <Menu.Item key="12"><Link to='/basic/socket'>SocketPage</Link></Menu.Item>
                 <Menu.Item key="13"><Link to='/basic/cssGridPage'>CssGridPage</Link></Menu.Item>
+                <Menu.Item key="13"><Link to='/basic/CssLayout'>CssLayout</Link></Menu.Item>
 
             </Menu>
         </Sider>
@@ -70,7 +72,8 @@ export default () => {
                         <Route path='/basic/indexDB' component={IndexDBPage} />
                         <Route path='/basic/socket' component={SocketPage} />
                         <Route path='/basic/cssGridPage' component={CssGridPage} />
-                        <Redirect path="/basic" exact to={{ pathname: '/basic/socket' }} />
+                        <Route path='/basic/CssLayout' component={CssLayout} />
+                        <Redirect path="/basic" exact to={{ pathname: '/basic/CssLayout' }} />
                     </Switch>
                 </Content>
 

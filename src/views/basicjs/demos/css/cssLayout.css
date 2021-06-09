@@ -1,0 +1,116 @@
+.dashboard {
+  border: 1px solid #000;
+  display: grid;
+  grid-template-columns: minmax(250px, 1fr) 3fr;
+  grid-gap: 14px;
+  height: 800px;
+  box-sizing: border-box;
+}
+
+.sider-bar {
+  border: 1px solid #000;
+  box-sizing: border-box;
+}
+.taps {
+}
+.taps__header {
+  display: flex;
+  justify-content: space-around;
+  background-color: bisque;
+  height: 50px;
+  line-height: 50px;
+  /* padding: 4px 0; */
+}
+.taps__content {
+  border: 1px solid #000;
+  height: 750px;
+}
+
+/* chat-window */
+.chat-window {
+  box-sizing: border-box;
+}
+.chat-window .window-header {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  height: 50px;
+  /* line-height: 50px; */
+  /* flex-direction: row; */
+  align-items: center;
+}
+/* flex: 
+1 => 1 1 0
+auto => 1 1 auto
+none => 0 0 auto
+0 auto => 0 1 auto
+*/
+.chat-window .window-header .goback {
+  /* flex: 2; */
+  /* flex: 0 auto; */
+  width: 60px;
+  border: 1px solid #f00;
+  align-self: flex-start;
+}
+.chat-window .window-header .title {
+  /* flex: 2; */
+  flex: 1;
+  border: 1px solid #f00;
+}
+.chat-window .window-header .avator {
+  /* flex: 2; */
+  /* flex: 1; */
+  width: 80px;
+  border: 1px solid #f00;
+}
+
+.chat-window .chat-box {
+  height: 670px;
+  background-color: #d6dce0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.chat-window .chat-box .chat-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  /* align-items: center; */
+
+  justify-items: right;
+  height: 666px;
+  border: 1px solid;
+
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 15px;
+  padding: 14px; 
+  
+  
+  flex	CSS3	无	复合属性。设置或检索伸缩盒对象的子元素如何分配空间。
+flex-grow	CSS3	无	设置或检索弹性盒的扩展比率。
+flex-shrink	CSS3	无	设置或检索弹性盒的收缩比率
+flex-basis	CSS3	无	设置或检索弹性盒伸缩基准值。
+flex-flow	CSS3	无	复合属性。设置或检索伸缩盒对象的子元素排列方式。
+flex-direction	CSS3	无	设置或检索伸缩盒对象的子元素在父容器中的位置。
+flex-wrap	CSS3	无	设置或检索伸缩盒对象的子元素超出父容器时是否换行。
+align-content	CSS3	无	设置或检索弹性盒堆叠伸缩行的对齐方式。
+align-items	CSS3	无	设置或检索弹性盒子元素在侧轴（纵轴）方向上的对齐方式。
+align-self	CSS3	无	设置或检索弹性盒子元素自身在侧轴（纵轴）方向上的对齐方式。
+justify-content	CSS3	无	设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。
+order	CSS3	无	设置或检索伸缩盒对象的子元素出現的順序。
+  
+  
+  
+  
+  
+  
+  */
+}
+.chat-window .chat-box .chat-list .chat-list__item {
+  height: 200px;
+  width: 333px;
+  border: 1px solid;
+}
+.chat-window .send-box {
+  height: 80px;
+  border: 1px solid #f00;
+}
