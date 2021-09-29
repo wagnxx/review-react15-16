@@ -13,30 +13,6 @@ export default function App() {
       <div className="app">
         <ul className="header">
           <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/login">login</Link>
-          </li>
-          <li>
-            <Link to="/product">product</Link>
-          </li>
-          <li>
-            <Link to="/manage">manage</Link>
-          </li>
-          <li>
-            <Link to="/hooks">hooks</Link>
-          </li>
-          <li>
-            <Link to="/RouterTestPage">RouterTestPage</Link>
-          </li>
-          <li>
-            <Link to="/CustReduxPage">CustReduxPage</Link>
-          </li>
-          <li>
-            <Link to="/SchedulePage">源码&fiber</Link>
-          </li>
-          <li>
             <Link to="/immutable">immutable</Link>
           </li>
         </ul>
