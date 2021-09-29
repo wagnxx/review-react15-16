@@ -1,37 +1,64 @@
 import React from 'react';
-import Immutable from 'immutable';
 // components 
 import SunComp from './SunComp';
 
-export default class PracticePage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            data: Immutable.Map({ times: 1 })
-        }
-    }
-    handleAdd() {
-        this.setState(({ data }) => ({
-            data: data.update('times', v => v + 1)
-        }));
-    }
-    render() {
-        const times = this.state.data.get('times');
-        return (
-            <div>
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { actions, actionsTypes } from './store';
+
+const PracticePage = props => {
+    const list = props.list
+    const listData = list.toJS();
+
+    return (
+        <div style={{
+            display:'flex'
+        }}>
+            <div className="left">
+
                 <h3>practice </h3>
-
-                <p>
-                    <span>
-
-                        times:
-                    </span>
-                    <span style={{ color: '#f00' }}>{times}</span>
-                    <button onClick={this.handleAdd.bind(this)}>加 一</button>
-                </p>
-                <hr />
+                <button onClick={props.handleTimesAdd.bind(this)}>time加 一</button>
+                <button onClick={props.handleTimesAddAsync.bind(this)}>time Async加 一</button>
                 <h3>子组件</h3>
-                <SunComp a='1' b='2' times={times} />
-            </div>)
+                <SunComp a='1' b='2' />
+
+            </div>
+            <div className="right" style={{padding:'0 20px',borderLeft:'1px solid #ddd'}}>
+
+                <button onClick={props.listAddHandle.bind(this)}>添加列表</button>
+                <button onClick={props.listAddHandleAsync.bind(this)}>async添加列表</button>
+                <div>
+                    <ul>
+                        {
+                            listData.length ? listData.map((item, index) => (
+                                <li key={index}>
+                                    name:   {item.name}
+                                    count:   {item.count}
+                                </li>
+                            ))
+                                : ''
+                        }
+                    </ul>
+                </div>
+            </div>
+
+        </div>)
+}
+
+
+const mapStateToProps = state => {
+    return {
+        list: state.getIn(['immutable', 'list'])
     }
 }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        handleTimesAddAsync: bindActionCreators(actions.fetchAdd, dispatch),
+        listAddHandleAsync: bindActionCreators(actions.fetchListAdd, dispatch),
+        handleTimesAdd: () => dispatch({ type: actionsTypes.MAP_ADD }),
+        listAddHandle: () => dispatch({ type: actionsTypes.LIST_ADD })
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PracticePage)

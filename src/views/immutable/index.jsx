@@ -13,24 +13,30 @@ import {
 import ApiPage from './ApiPage';
 import PracticePage from './PracticePage';
 
+
+import { Provider } from 'react-redux';
+import createStore from '../../store';
+const store = createStore();
 export default () => {
     return (
+        <Provider store={store}>
 
-        <Router>
-            <ul>
+            <Router>
+                <ul>
 
-                <li><Link to='/immutable/api'>api</Link></li>
-                <li><Link to='/immutable/practice'>practice</Link></li>
-            </ul>
-            <hr />
+                    <li><Link to='/immutable/api'>api</Link></li>
+                    <li><Link to='/immutable/practice'>practice</Link></li>
+                </ul>
+                <hr />
 
-            <Switch>
-                <Route path='/immutable/api' component={ApiPage} />
-                <Route path='/immutable/practice' component={PracticePage} />
-                <Redirect path="/immutable" exact to={{ pathname: '/immutable/practice' }} />
-            </Switch>
+                <Switch>
+                    <Route path='/immutable/api' component={ApiPage} />
+                    <Route path='/immutable/practice' component={PracticePage} />
+                    <Redirect path="/immutable" exact to={{ pathname: '/immutable/practice' }} />
+                </Switch>
 
-        </Router>
+            </Router>
+        </Provider>
 
     )
 }
