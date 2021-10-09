@@ -2,13 +2,21 @@ import React from 'react';
 // components 
 import SunComp from './SunComp';
 
-import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
 import { actions, actionsTypes } from './store';
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux';
 
 const PracticePage = props => {
-    const list = props.list
+    const list = useSelector(state => state.getIn(['immutable', 'list']))
     const listData = list.toJS();
+
+    const dispatch = useDispatch();
+
+    const handleTimesAddAsync = bindActionCreators(actions.fetchAdd, dispatch);
+    const listAddHandleAsync = bindActionCreators(actions.fetchListAdd, dispatch);
+    const handleTimesAdd =  () => dispatch({ type: actionsTypes.MAP_ADD });
+    const listAddHandle = () => dispatch({ type: actionsTypes.LIST_ADD });
 
     return (
         <div style={{
@@ -17,16 +25,16 @@ const PracticePage = props => {
             <div className="left">
 
                 <h3>practice </h3>
-                <button onClick={props.handleTimesAdd.bind(this)}>time加 一</button>
-                <button onClick={props.handleTimesAddAsync.bind(this)}>time Async加 一</button>
+                <button onClick={handleTimesAdd.bind(this)}>time加 一</button>
+                <button onClick={handleTimesAddAsync.bind(this)}>time Async加 一</button>
                 <h3>子组件</h3>
                 <SunComp a='1' b='2' />
 
             </div>
             <div className="right" style={{padding:'0 20px',borderLeft:'1px solid #ddd'}}>
 
-                <button onClick={props.listAddHandle.bind(this)}>添加列表</button>
-                <button onClick={props.listAddHandleAsync.bind(this)}>async添加列表</button>
+                <button onClick={listAddHandle.bind(this)}>添加列表</button>
+                <button onClick={listAddHandleAsync.bind(this)}>async添加列表</button>
                 <div>
                     <ul>
                         {
@@ -45,20 +53,4 @@ const PracticePage = props => {
         </div>)
 }
 
-
-const mapStateToProps = state => {
-    return {
-        list: state.getIn(['immutable', 'list'])
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        handleTimesAddAsync: bindActionCreators(actions.fetchAdd, dispatch),
-        listAddHandleAsync: bindActionCreators(actions.fetchListAdd, dispatch),
-        handleTimesAdd: () => dispatch({ type: actionsTypes.MAP_ADD }),
-        listAddHandle: () => dispatch({ type: actionsTypes.LIST_ADD })
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PracticePage)
+export default PracticePage;

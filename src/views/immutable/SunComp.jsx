@@ -1,9 +1,11 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect,useSelector } from 'react-redux'
 const SunComp = props => {
-    const map = props.map;
+    // const map = props.map;
+    
+    const map = useSelector(state => state.getIn(['immutable', 'map']))
+    
     const times = map.get('times');
-
     return <div>
         a:{props.a}
         b:
@@ -15,11 +17,12 @@ const SunComp = props => {
 
 
 
-const mapStateToProps = state => {
-    return {
-        map: state.getIn(['immutable', 'map']),
-    }
-}
+// const mapStateToProps = state => {
+//     return {
+//         map: state.getIn(['immutable', 'map']),
+//     }
+// }
 
-const mapDispatchToProps = null;
-export default connect(mapStateToProps, mapDispatchToProps)(SunComp)
+// const mapDispatchToProps = null;
+// export default connect(mapStateToProps, mapDispatchToProps)(SunComp)
+export default SunComp
